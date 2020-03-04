@@ -30,18 +30,18 @@ class Pokemon < ActiveRecord::Base
             poke_id_response = gets.chomp
             Pokemon.select_pokemon_by_id(poke_id_response,user)
         when 3
-            Type.type_menu
+            Type.type_menu(user)
         when 4
             user.main_menu
         end
     end
 
     def self.select_pokemon_by_name(pokemon_name,user)
-        @found_pokemon = all.find_by(name: pokemon_name)
+        @found_pokemon = all.find_by(name: pokemon_name.downcase)
         if !@found_pokemon
             puts "Could not find that Pokemon. Please try your search again."
             puts "\n"
-            search_menu
+            search_menu(user)
         else
             @found_pokemon.display_pokemon_info
         end
@@ -58,6 +58,7 @@ class Pokemon < ActiveRecord::Base
         end
     end
     
+    #Displays all stats for a single pokemon
     def display_pokemon_info
         #Figure out how to render this image in terminal
         #Front sprite
@@ -72,13 +73,14 @@ class Pokemon < ActiveRecord::Base
         #figure out what menu follows this
     end
 
-    def self.list_pokemon_by_type(pokemon_type)
+    def self.list_pokemon_by_type(pokemon_type, user)
         prompt = TTY::Prompt.new
-        binding.pry
-        pokemon_choices = all.find_by(type_1: pokemon_type)
-        
-        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_choices)
-        (select_pokemon_by_name(pokemon_choice_response, user))
+        pokemon_choices = all.where(type_1: pokemon_type.downcase)
+        pokemon_names = pokemon_choices.map do |pokemon|
+            pokemon.name.capitalize
+        end
+        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_names)
+        select_pokemon_by_name(pokemon_choice_response, user)
     end
 
 end
