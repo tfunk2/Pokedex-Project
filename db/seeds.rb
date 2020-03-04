@@ -11,8 +11,8 @@ Type.destroy_all
 # pokemon3 = Pokemon.create(name: "venusaur", pokemon_id: 4, height: 10, weight: 100, type_1: "grass")
 # pokemon4 = Pokemon.create(name: "mew", pokemon_id: 151, height: 4, weight: 10, type_1: "psychic")
 
-user1 = User.create(username: "Kristine")
-user2 = User.create(username: "Tyler")
+# user1 = User.create(username: "Kristine")
+# user2 = User.create(username: "Tyler")
 
 # FavoritePokemon.create(user_id: user1.id, pokemon_id: pokemon1.id)
 # FavoritePokemon.create(user_id: user2.id, pokemon_id: pokemon2.id)
@@ -27,7 +27,7 @@ def get_pokemon
 
 
         pokedata = JSON.parse(response)
-        Pokemon.create(name: pokedata["name"], pokemon_id: pokedata["id"], height: pokedata["height"], weight: pokedata["weight"], type_1: pokedata["types"][0]["type"]["name"])
+        Pokemon.create(name: pokedata["name"], pokemon_id: pokedata["id"], height: pokedata["height"], weight: pokedata["weight"], type_1: pokedata["types"][-1]["type"]["name"])
 
         i += 1
     end
