@@ -3,24 +3,54 @@ class User < ActiveRecord::Base
     has_many :pokemon, through: :favorite_pokemon
 
     def self.find_user(user_input)
-        found_user = all.find_by(username: user_input)
-        if found_user
-            puts "\nWelcome back, #{found_user.username}!"
-            main_menu(found_user)
+        @found_user = all.find_by(username: user_input)
+        if @found_user
+            system("clear")
+            puts "\nWelcome back, #{@found_user.username}!"
+            @found_user.main_menu
         else
             create_user(user_input)
         end
     end
 
     def self.create_user(user_input)
-        new_user = create(username: user_input)
-        puts "\nNew username detected. Hello, #{new_user.username}!"
-        main_menu(new_user)
+        @new_user = create(username: user_input)
+        puts "\nNew username detected. Hello, #{@new_user.username}!"
+        @found_user.main_menu
+    end
+
+    def main_menu
+        # Instatiate new menu prompt
+        prompt = TTY::Prompt.new
+            
+        # Define menu choices
+        choices = {
+            'Learn about a Pokemon' => 1,
+            'See my Favorite Pokemon' => 2,
+            'Update my username' => 3,
+            'Goodbye' => 4
+        }
+
+        # Display prompt and set variable to user's choice
+        menu_response = prompt.select("\nSelect an option from the menu:", choices)
+
+        # Conditional logic based on user choice selection
+        case menu_response
+        when 1
+            Pokemon.search_menu(self)
+        when 2
+            favorite_pokemon_list
+        when 3
+            update_username
+        end
     end
 
     def favorite_pokemon_list
         pokemon.map do |favorite|
             favorite.name
         end
+    end
+
+    def update_username
     end
 end
