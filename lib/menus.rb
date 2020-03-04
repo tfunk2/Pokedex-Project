@@ -1,7 +1,7 @@
 require "tty-prompt"
 require 'pry'
 
-def main_menu
+def main_menu(user)
     # Instatiate new menu prompt
     prompt = TTY::Prompt.new
 
@@ -13,7 +13,7 @@ def main_menu
     }
 
     # Display prompt and set variable to user's choice
-    menu_response = prompt.select("Select an option to learn more about the first 151 Pokemon:", choices)
+    menu_response = prompt.select("\nSelect an option to learn more about the first 151 Pokemon:", choices)
 
     # Conditional logic based on user choice selection
     case menu_response
