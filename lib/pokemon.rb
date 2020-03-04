@@ -29,7 +29,7 @@ class Pokemon < ActiveRecord::Base
             poke_id_response = gets.chomp
             Pokemon.select_pokemon_by_id(poke_id_response,user)
         when 3
-            type_menu
+            Type.type_menu
         when 4
             user.main_menu
         end
@@ -71,7 +71,7 @@ class Pokemon < ActiveRecord::Base
         #figure out what menu follows this
     end
 
-    def list_pokemon_by_type(pokemon_type)
+    def self.list_pokemon_by_type(pokemon_type)
     
     end
 
