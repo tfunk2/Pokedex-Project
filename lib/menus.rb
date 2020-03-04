@@ -24,7 +24,7 @@ def main_menu
     when 2
         puts "Enter Pokemon ID between 1-151:"
         poke_id_response = gets.chomp
-        select_pokemon_by_name(poke_id_response)
+        select_pokemon_by_id(poke_id_response)
     when 3
         type_menu
     end
