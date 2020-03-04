@@ -27,8 +27,11 @@ def list_pokemon_by_type(pokemon_type)
 end
 
 def display_pokemon_info(pokemon_info)
-    #figure out how to render this image in terminal
+    #Figure out how to render this image in terminal
+    #Front sprite
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{pokemon_info.pokemon_id}.png"
+    #Back sprite
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{pokemon_info.pokemon_id}.png"
     puts "Name: #{pokemon_info.name.capitalize}"
     puts "Pokemon ID: #{pokemon_info.pokemon_id}"
     puts "Height: #{pokemon_info.height}"
