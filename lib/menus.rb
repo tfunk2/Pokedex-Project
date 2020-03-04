@@ -2,13 +2,20 @@ require "tty-prompt"
 require 'pry'
 
 def main_menu
+    # Instatiate new menu prompt
     prompt = TTY::Prompt.new
+
+    # Define menu choices
     choices = {
         'Input a Pokemon by Name' => 1,
         'Input a Pokemon by ID' => 2,
         'Select a Pokemon Type to view a list of Pokemon' => 3
     }
+
+    # Display prompt and set variable to user's choice
     menu_response = prompt.select("Select an option to learn more about the first 151 Pokemon:", choices)
+
+    # Conditional logic based on user choice selection
     case menu_response
     when 1
         puts "Enter Pokemon Name:"
@@ -25,9 +32,10 @@ end
 
 def type_menu
     prompt = TTY::Prompt.new
-    types = {
-        
-    }
-    poke_type_response = prompt.select("Select a Pokemon Type:", types)
+    choice_types = Type.list_of_types.sort
+    poke_type_response = prompt.select("Select a Pokemon Type:", choice_types)
+
+    list_pokemon_by_type(poke_type_response)
+
 end
 # binding.pry

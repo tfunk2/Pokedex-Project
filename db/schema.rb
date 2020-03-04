@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_231239) do
+ActiveRecord::Schema.define(version: 2020_03_04_071247) do
 
   create_table "favorite_pokemons", force: :cascade do |t|
     t.integer "pokemon_id"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 2020_03_03_231239) do
     t.integer "height"
     t.integer "weight"
     t.string "type_1"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
