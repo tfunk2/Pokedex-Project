@@ -1,3 +1,4 @@
+require 'pry'
 class Pokemon < ActiveRecord::Base
     has_many :favorite_pokemon
     has_many :user, through: :favorite_pokemon
@@ -29,7 +30,7 @@ class Pokemon < ActiveRecord::Base
             poke_id_response = gets.chomp
             Pokemon.select_pokemon_by_id(poke_id_response,user)
         when 3
-            Type.type_menu
+            Type.type_menu(user)
         when 4
             user.main_menu
         end
@@ -40,7 +41,7 @@ class Pokemon < ActiveRecord::Base
         if !@found_pokemon
             puts "Could not find that Pokemon. Please try your search again."
             puts "\n"
-            search_menu
+            search_menu(user)
         else
             @found_pokemon.display_pokemon_info(user)
         end
@@ -57,6 +58,7 @@ class Pokemon < ActiveRecord::Base
         end
     end
     
+    #Displays all stats for a single pokemon
     def display_pokemon_info(user)
         #Figure out how to render this image in terminal
         #Front sprite
@@ -97,8 +99,14 @@ class Pokemon < ActiveRecord::Base
         end
     end
 
-    def self.list_pokemon_by_type(pokemon_type)
-    
+    def self.list_pokemon_by_type(pokemon_type, user)
+        prompt = TTY::Prompt.new
+        pokemon_choices = all.where(type_1: pokemon_type.downcase)
+        pokemon_names = pokemon_choices.map do |pokemon|
+            pokemon.name.capitalize
+        end
+        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_names)
+        select_pokemon_by_name(pokemon_choice_response, user)
     end
 
     def add_to_user_favorites(user_passed)
