@@ -20,11 +20,11 @@ def main_menu(user)
     when 1
         puts "Enter Pokemon Name:"
         poke_name_response = gets.chomp.downcase
-        select_pokemon_by_name(poke_name_response)
+        Pokemon.select_pokemon_by_name(poke_name_response)
     when 2
         puts "Enter Pokemon ID between 1-151:"
         poke_id_response = gets.chomp
-        select_pokemon_by_id(poke_id_response)
+        Pokemon.select_pokemon_by_id(poke_id_response)
     when 3
         type_menu
     end
