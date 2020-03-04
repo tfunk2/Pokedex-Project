@@ -15,13 +15,13 @@ class Pokemon < ActiveRecord::Base
     end
 
     def self.select_pokemon_by_id(poke_id)
-        found_pokemon_by_id = all.find_by(pokemon_id: poke_id)
-        if !found_pokemon_by_id
+        @found_pokemon_by_id = all.find_by(pokemon_id: poke_id)
+        if !@found_pokemon_by_id
             puts "Could not find that Pokemon. Please try your search again."
             puts "\n"
             main_menu(user)
         else
-            display_pokemon_info(found_pokemon_by_id)
+            @found_pokemon_by_id.display_pokemon_info
         end
     end
     
