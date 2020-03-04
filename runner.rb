@@ -3,6 +3,6 @@ require 'pry'
 
 Cli.new.welcome
 
-binding.pry
+# binding.pry
 
 
