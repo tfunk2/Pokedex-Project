@@ -36,13 +36,13 @@ class Pokemon < ActiveRecord::Base
     end
 
     def self.select_pokemon_by_name(pokemon_name,user)
-        @found_pokemon = all.find_by(name: pokemon_name)
+        @found_pokemon = all.find_by(name: pokemon_name.downcase)
         if !@found_pokemon
             puts "Could not find that Pokemon. Please try your search again."
             puts "\n"
             search_menu
         else
-            @found_pokemon.display_pokemon_info
+            @found_pokemon.display_pokemon_info(user)
         end
     end
 
@@ -53,26 +53,56 @@ class Pokemon < ActiveRecord::Base
             puts "\n"
             search_menu(user)
         else
-            @found_pokemon_by_id.display_pokemon_info
+            @found_pokemon_by_id.display_pokemon_info(user)
         end
     end
     
-    def display_pokemon_info
+    def display_pokemon_info(user)
         #Figure out how to render this image in terminal
         #Front sprite
         RestClient.get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{pokemon_id}.png")
         #Back sprite
         RestClient.get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{pokemon_id}.png")
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
         puts "Name: #{name.capitalize}"
         puts "Pokemon ID: #{pokemon_id}"
         puts "Height: #{height}"
         puts "Weight: #{weight}"
         puts "Type: #{type_1.capitalize}"
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         #figure out what menu follows this
+        more_options_menu(user)
+    end
+
+    def more_options_menu(user)
+        # Instatiate new menu prompt
+        prompt = TTY::Prompt.new
+    
+        # Define menu choices
+        choices = {
+            'Add Pokemon to my Favorites' => 1,
+            'Return to Main Menu' => 4
+        }
+    
+        # Display prompt and set variable to user's choice
+        menu_response = prompt.select("\nMore options:", choices)
+    
+        # Conditional logic based on user choice selection
+        case menu_response
+        when 1
+            add_to_user_favorites(user)
+        when 4
+            system("clear")
+            user.main_menu
+        end
     end
 
     def self.list_pokemon_by_type(pokemon_type)
     
+    end
+
+    def add_to_user_favorites(user_passed)
+        FavoritePokemon.create(user: user_passed, pokemon: self)
     end
 
 end

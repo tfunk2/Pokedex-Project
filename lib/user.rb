@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     def self.create_user(user_input)
         @new_user = create(username: user_input)
         puts "\nNew username detected. Hello, #{@new_user.username}!"
-        @found_user.main_menu
+        @new_user.main_menu
     end
 
     def main_menu
@@ -42,15 +42,24 @@ class User < ActiveRecord::Base
             favorite_pokemon_list
         when 3
             update_username
+        when 4
+            puts "\nSee you later!\n\n"
         end
     end
 
     def favorite_pokemon_list
-        pokemon.map do |favorite|
-            favorite.name
+        list = pokemon.map do |favorite|
+            favorite.name.capitalize
         end
+        # Instatiate new menu prompt
+        prompt = TTY::Prompt.new
+
+        # Display prompt and set variable to user's choice
+        menu_response = prompt.select("\nHere are your Favorite Pokemon! Select one to view its information:", list)
+        Pokemon.select_pokemon_by_name(menu_response,self)
     end
 
     def update_username
+
     end
 end
