@@ -1,3 +1,4 @@
+require 'pry'
 class Pokemon < ActiveRecord::Base
     has_many :favorite_pokemon
     has_many :user, through: :favorite_pokemon
@@ -72,7 +73,12 @@ class Pokemon < ActiveRecord::Base
     end
 
     def self.list_pokemon_by_type(pokemon_type)
-    
+        prompt = TTY::Prompt.new
+        binding.pry
+        pokemon_choices = all.find_by(type_1: pokemon_type)
+        
+        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_choices)
+        (select_pokemon_by_name(pokemon_choice_response, user))
     end
 
 end

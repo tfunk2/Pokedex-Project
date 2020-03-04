@@ -11,8 +11,11 @@ class Type < ActiveRecord::Base
     end
 
     def self.list_of_types
-        all.map do |type|
+        all_types = all.map do |type|
             type.name.capitalize
+        end
+        all_types.reject do |type|
+            type == "Steel" || type == "Fairy" || type == "Dark" || type == "Shadow"
         end
     end
 end
