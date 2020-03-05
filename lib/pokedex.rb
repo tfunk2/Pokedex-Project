@@ -1,6 +1,6 @@
 class Pokedex
 
-    def welcome
+    def self.welcome
         system("clear")
         puts "Welcome to the Pokedex for generation one Pokemon!\n\n"
         puts "Enter a new or existing username to continue:"

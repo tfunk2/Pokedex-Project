@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
             'Learn about a Pokemon' => 1,
             'See my Favorite Pokemon' => 2,
             'Update my username' => 3,
-            'Goodbye' => 4
+            'Switch user' => 4,
+            'Goodbye' => 5
         }
 
         # Display prompt and set variable to user's choice
@@ -43,23 +44,34 @@ class User < ActiveRecord::Base
         when 3
             update_username
         when 4
+            Pokedex.welcome
+        when 5
             puts "\nSee you later!\n\n"
         end
     end
 
     def favorite_pokemon_list
-        list = pokemon.map do |favorite|
-            favorite.name.capitalize
-        end
-        # Instatiate new menu prompt
-        prompt = TTY::Prompt.new
+        if pokemon == []
+            puts "\nYou don't have any favorites yet!\n"
+            main_menu
+        else
+            list = pokemon.map do |favorite|
+                favorite.name.capitalize
+            end
+            # Instatiate new menu prompt
+            prompt = TTY::Prompt.new
 
-        # Display prompt and set variable to user's choice
-        menu_response = prompt.select("\nHere are your Favorite Pokemon! Select one to view its information:", list)
-        Pokemon.select_pokemon_by_name(menu_response,self)
+            # Display prompt and set variable to user's choice
+            menu_response = prompt.select("\nHere are your Favorite Pokemon! Select one to view its information:", list)
+            Pokemon.select_pokemon_by_name(menu_response,self)
+        end
     end
 
     def update_username
-
+        puts "\nWhat would you like to change your username to?"
+        new_username = gets.chomp
+        self.update(username: new_username)
+        puts "\nGreat! Thanks, #{username}.\n"
+        main_menu
     end
 end

@@ -1,7 +1,7 @@
 require_relative 'config/environment'
 require 'pry'
 
-Pokedex.new.welcome
+Pokedex.welcome
 
 # binding.pry
 

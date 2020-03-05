@@ -95,7 +95,7 @@ class Pokemon < ActiveRecord::Base
     
         # Display prompt and set variable to user's choice
         menu_response = prompt.select("\nMore options:", choices)
-    
+        
         # Conditional logic based on user choice selection
         case menu_response
         when 1
@@ -120,13 +120,15 @@ class Pokemon < ActiveRecord::Base
 
     def add_to_user_favorites(user_passed)
         FavoritePokemon.create(user: user_passed, pokemon: self)
+        user_passed.favorite_pokemon.reload
         system("clear")
         puts "\n#{name.capitalize} added to Favorites."
         user_passed.main_menu
     end
     
     def remove_from_user_favorites(user_passed)
-        favorite_pokemon.find_by(user: user_passed).destroy
+        favorite_pokemon.find_by(user: user_passed).delete
+        user_passed.favorite_pokemon.reload
         system("clear")
         puts "\n#{name.capitalize} removed from Favorites."
         user_passed.main_menu
