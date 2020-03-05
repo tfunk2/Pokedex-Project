@@ -7,7 +7,7 @@ class Pokemon < ActiveRecord::Base
     # Menu options to search for a Pokemon
     def self.search_menu(user)
         # Instatiate new menu prompt
-        prompt = TTY::Prompt.new
+        prompt = TTY::Prompt.new(active_color: :bright_magenta)
     
         # Define menu choices
         choices = {
@@ -18,16 +18,16 @@ class Pokemon < ActiveRecord::Base
         }
     
         # Display prompt and set variable to user's choice
-        menu_response = prompt.select("\nSelect an option to learn more about the first 151 Pokemon:", choices)
+        menu_response = prompt.select("\nSelect an option to learn more about the first 151 Pokemon:".light_yellow, choices)
     
         # Conditional logic based on user choice selection
         case menu_response
         when 1
-            puts "Enter Pokemon Name:"
+            puts "\nEnter Pokemon Name:".light_yellow
             poke_name_response = gets.chomp.downcase
             Pokemon.select_pokemon_by_name(poke_name_response,user)
         when 2
-            puts "Enter Pokemon ID between 1-151:"
+            puts "\nEnter Pokemon ID between 1-151:".light_yellow
             poke_id_response = gets.chomp
             Pokemon.select_pokemon_by_id(poke_id_response,user)
         when 3
@@ -44,7 +44,7 @@ class Pokemon < ActiveRecord::Base
 
         # Conditional statement: If pokemon not found, return to search menu, otherwise access User#display_pokemon_info
         if !@found_pokemon
-            puts "Could not find that Pokemon. Please try your search again."
+            puts "Could not find that Pokemon. Please try your search again.".light_red
             puts "\n"
             search_menu(user)
         else
@@ -59,7 +59,7 @@ class Pokemon < ActiveRecord::Base
 
         # Conditional statement: If pokemon not found, return to search menu, otherwise access User#display_pokemon_info
         if !@found_pokemon_by_id
-            puts "Could not find that Pokemon. Please try your search again."
+            puts "Could not find that Pokemon. Please try your search again.".light_red
             puts "\n"
             search_menu(user)
         else
@@ -70,7 +70,7 @@ class Pokemon < ActiveRecord::Base
     # This method displays list of Pokemon to select that match Type input by user from Type.type_menu based on a Pokemon's type_1
     def self.list_pokemon_by_type(pokemon_type, user)
         # Instatiate new menu prompt
-        prompt = TTY::Prompt.new
+        prompt = TTY::Prompt.new(active_color: :bright_magenta)
 
         # Define choices to be Pokemon names from pokemons table that match user input based on type_1
         pokemon_list = all.where(type_1: pokemon_type.downcase)
@@ -79,30 +79,23 @@ class Pokemon < ActiveRecord::Base
         end
 
         # Display prompt and set variable to user's choice
-        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_choices.sort)
+        pokemon_choice_response = prompt.select("\nSelect a Pokemon".light_yellow, pokemon_choices.sort, filter: true)
 
         # Based on Pokemon name selected, access Pokemon#select_pokemon_by_name to get pokemon object
         select_pokemon_by_name(pokemon_choice_response, user)
     end
 
-    # Display all stats for a single pokemon
+    # Display all ascii art and stats for a single pokemon
     def display_pokemon_info(user)
-        #Figure out how to render this image in terminal
-        #Front sprite
-        RestClient.get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{pokemon_id}.png")
-        #Back sprite
-        RestClient.get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{pokemon_id}.png")
-        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
-        
         Ascii.art(pokemon_id)
 
-        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
-        puts "Name: #{name.capitalize}"
-        puts "Pokemon ID: #{pokemon_id}"
-        puts "Height: #{height}"
-        puts "Weight: #{weight}"
-        puts "Type: #{type_1.capitalize}"
-        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
+        puts "Name: #{name.capitalize}".light_blue
+        puts "Pokemon ID: #{pokemon_id}".light_blue
+        puts "Height: #{height}".light_blue
+        puts "Weight: #{weight}".light_blue
+        puts "Type: #{type_1.capitalize}".light_blue
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
         
         # Display additional options menu for this Pokemon
         more_options_menu(user)
@@ -111,7 +104,7 @@ class Pokemon < ActiveRecord::Base
     # This method displays additional options menu when vieweing a Pokemon
     def more_options_menu(user)
         # Instatiate new menu prompt
-        prompt = TTY::Prompt.new
+        prompt = TTY::Prompt.new(active_color: :bright_magenta)
 
         # Define menu choices based on whether Pokemon is one of current user's Favorite Pokemon. Note: user paramater is the user object that has been passed in from main_menu > search menu ...
         if FavoritePokemon.all.find_by(user_id: user.id, pokemon: self) 
@@ -127,7 +120,7 @@ class Pokemon < ActiveRecord::Base
         end
     
         # Display prompt and set variable to user's choice
-        menu_response = prompt.select("\nMore options:", choices)
+        menu_response = prompt.select("\nMore options:".light_yellow, choices)
         
         # Conditional logic based on user choice selection
         case menu_response
@@ -146,7 +139,7 @@ class Pokemon < ActiveRecord::Base
         FavoritePokemon.create(user: user_passed, pokemon: self)
 
         system("clear")
-        puts "\n#{name.capitalize} added to Favorites."
+        puts "\n#{name.capitalize} added to Favorites.".light_green
 
         # Return user to main_menu
         user_passed.main_menu
@@ -157,7 +150,7 @@ class Pokemon < ActiveRecord::Base
         favorite_pokemon.find_by(user: user_passed).delete
 
         system("clear")
-        puts "\n#{name.capitalize} removed from Favorites."
+        puts "\n#{name.capitalize} removed from Favorites.".light_green
 
         # Return user to main_menu
         user_passed.main_menu

@@ -1,24 +1,25 @@
 class Ascii
 
     def self.welcome_art
-        puts "                                                 .odh.                                              "
-        puts "                                               `+ddosd:                                             "
-        puts "                                   `-`-`      :hds-:ohh.                                            "
-        puts "       `.:/+oooo+/-`         `-/oyhddmmdo.  -hmdsshs/.omNmdhhddhys+:`             `:                "
-        puts "   `:oydyso++//+osyds-    `ymdyo+/:hmdo:sdy-/mmddhhhhyhNNdo:::::/+sydy:      -/oyysdy.   `+yy-      "
-        puts "`+yds+:------------:sd+   .Nmdyo---yh/---:sddy/:-:---/sdmm/---------/ody`  .mmo:---/hd:`+mmhyd/     "
-        puts "sNmd+---------/+/:--:sd.  `hdNmy---/-----odd/-:syhd+-/hmmd:----------:+do  `Nmdd+---:yddmh/--odo    "
-        puts " oNNds-/-----:hddmo--sd+osyyhdmh-------+hydy--oh+y::yddmmmd+----------/dd+++mddNmy:---sy/-----/ds`  "
-        puts "  /NNmmmy-----/d+mo-/dds/++:-:+yy-----ohhsdh--:o/-/s+-/sdmd:-:o+/---:sdyo+++oshmmNdo--------:ohdy:  "
-        puts "   -yoNNms-----sy/-odh:-ods::s-:hs------:/ody/--------/yddh--sddmy-/dh:--+ss+--/ymmh/----:ohh+-     "
-        puts "      :NNms-----:odmd/--/yddho-:hy-:hyo/---:shhysosshddNNmo-:yyomy:yd:--yy/yhs--:yd:-----:ohy:      "
-        puts "       +NNmo----odmNm+---------sd/-:dmNmdyo/--:/sdho/.oNmd:-:hhs+--yd---+/::/+syhdh+-:sho---+hh+`   "
-        puts "        oNmd+---:hmNmd+------+hdy--:dy-+ymNmdyo/od:   hNmd--------/hdy:---:+oosddy:-odhNmdo---/ydo. "
-        puts "         yNmd/---+dydNmmhyyhdhNmdsyhds    -+ymNmmd:  `NNmdyysssyhdmh/ddy+:----:hmmdhm+ .sNmd+---/sds"
-        puts "          hNmd/--:hd`-+syso:`.hsoo+/-         -+yo.  `+shhhmmdhyo/.   /ymmmdhhdmmmNd-    .sNmh+--:dy"
-        puts "          `dNmdsyhmh-                                                    .:+++++:`/`       -hNmh+od-"
-        puts "           `dNhs+:.                                                                          -hNmdy "
-        puts "                                         Powered by PokeAPI.co                                 -hN- \n\n"
+        puts %Q(
+                                                 .odh.                                              
+                                               `+ddosd:                                             
+                                   `-`-`      :hds-:ohh.                                            
+       `.:/+oooo+/-`         `-/oyhddmmdo.  -hmdsshs/.omNmdhhddhys+:`             `:                
+   `:oydyso++//+osyds-    `ymdyo+/:hmdo:sdy-/mmddhhhhyhNNdo:::::/+sydy:      -/oyysdy.   `+yy-      
+`+yds+:------------:sd+   .Nmdyo---yh/---:sddy/:-:---/sdmm/---------/ody`  .mmo:---/hd:`+mmhyd/     
+Nmd+---------/+/:--:sd.  `hdNmy---/-----odd/-:syhd+-/hmmd:----------:+do  `Nmdd+---:yddmh/--odo     
+ oNNds-/-----:hddmo--sd+osyyhdmh-------+hydy--oh+y::yddmmmd+----------/dd+++mddNmy:---sy/-----/ds`  
+  /NNmmmy-----/d+mo-/dds/++:-:+yy-----ohhsdh--:o/-/s+-/sdmd:-:o+/---:sdyo+++oshmmNdo--------:ohdy:  
+   -yoNNms-----sy/-odh:-ods::s-:hs------:/ody/--------/yddh--sddmy-/dh:--+ss+--/ymmh/----:ohh+-     
+      :NNms-----:odmd/--/yddho-:hy-:hyo/---:shhysosshddNNmo-:yyomy:yd:--yy/yhs--:yd:-----:ohy:      
+       +NNmo----odmNm+---------sd/-:dmNmdyo/--:/sdho/.oNmd:-:hhs+--yd---+/::/+syhdh+-:sho---+hh+`   
+        oNmd+---:hmNmd+------+hdy--:dy-+ymNmdyo/od:   hNmd--------/hdy:---:+oosddy:-odhNmdo---/ydo. 
+         yNmd/---+dydNmmhyyhdhNmdsyhds    -+ymNmmd:  `NNmdyysssyhdmh/ddy+:----:hmmdhm+ .sNmd+---/sds
+          hNmd/--:hd`-+syso:`.hsoo+/-         -+yo.  `+shhhmmdhyo/.   /ymmmdhhdmmmNd-    .sNmh+--:dy
+          `dNmdsyhmh-                                                    .:+++++:`/`       -hNmh+od-
+           `dNhs+:.                                                                          -hNmdy 
+                                         Powered by PokeAPI.co                                 -hN- \n).colorize(:color => :blue, :background => :yellow)
     end
     
     def self.art(pokemon_id)
@@ -52,8 +53,6 @@ class Ascii
             puts " .'          /| `-.        . ,'         ,           ,"
             puts " '-.__ __ _,','    '`-..___;-...__   ,.'\\ ____.___.'"
             puts " `\"^--'..'   '-`-^-'\"--    `-^-'`.''\"\"\"\"\"`.,^.`.--' mh"
-            puts ""
-            puts ""
         when 2
             puts "                               ,'\"`.,./."
             puts "                             ,'        Y',\".."
@@ -154,8 +153,6 @@ class Ascii
             puts "   -\" /`.         _,'     | _  _  _.|"
             puts "    \"\"--'---\"\"\"\"\"'        `' '! |! /"
             puts "                            `\" \" -' mh"
-            puts ""
-            puts ""
         when 5
             puts "                      ,-'`\\"
             puts "                  _,\"'    j"

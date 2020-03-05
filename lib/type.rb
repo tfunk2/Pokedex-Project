@@ -3,9 +3,9 @@ class Type < ActiveRecord::Base
 
     # This menu displays list of Types for user selection
     def self.type_menu(user)
-        prompt = TTY::Prompt.new
+        prompt = TTY::Prompt.new(active_color: :bright_magenta)
         choice_types = list_of_types.sort
-        poke_type_response = prompt.select("Select a Pokemon Type:", choice_types)
+        poke_type_response = prompt.select("Select a Pokemon Type:".light_yellow, choice_types, filter: true)
     
         Pokemon.list_pokemon_by_type(poke_type_response, user)
     
