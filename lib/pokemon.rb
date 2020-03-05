@@ -93,6 +93,10 @@ class Pokemon < ActiveRecord::Base
         #Back sprite
         RestClient.get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/#{pokemon_id}.png")
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+        
+        Ascii.art(pokemon_id)
+
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
         puts "Name: #{name.capitalize}"
         puts "Pokemon ID: #{pokemon_id}"
         puts "Height: #{height}"
