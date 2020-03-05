@@ -1,6 +1,7 @@
 class Type < ActiveRecord::Base
     has_many :pokemon
 
+    # This menu displays list of Types for user selection
     def self.type_menu(user)
         prompt = TTY::Prompt.new
         choice_types = list_of_types.sort
@@ -10,6 +11,7 @@ class Type < ActiveRecord::Base
     
     end
 
+    # This method creates list of Types from types table and excludes specific types
     def self.list_of_types
         all_types = all.map do |type|
             type.name.capitalize
