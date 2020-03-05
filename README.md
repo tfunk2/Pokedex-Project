@@ -42,19 +42,21 @@ If new user, type the desired username and hit return/enter.
 
 For each menu that appears in the app, use the 'up' and 'down' keys to highlight an option, and then press return/enter to make a choice.
 
-#### Main Menu: Learn about a Pokemon
+### Main Menu
+
+#### Learn about a Pokemon
 This option takes the user to a menu that allows them to choose which method they would like to input the "Pokemon" they are searching for the options are to search by name, search by "Pokemon ID" number (1 - 151), or the user can access a list of "Pokemon Types" that allows them to search through a list of "Pokemon" belonging to that "Type". 
 
-#### Main Menu: See my Favorite Pokemon
+#### See my Favorite Pokemon
 This option allows the current user to see a list of "Pokemon" that were previously added to their "Favorite Pokemon" list. This is followed by the option to select and view the displayed information for a single "Pokemon". Which then brings you to a sub-menu that gives you two more options, to "Remove Pokemon from my Favorites", or to return to the main menu.
 
-#### Main Menu: Update my username
+#### Update my username
 This option allows a user to change their username, and keep all of favorite "Pokemon" in their "Favorite Pokemon" collection.
 
-#### Main Menu: Switch user
+#### Switch user
 This option allows the current user to switch to another account if it has previously been created from their local machine. If the username does not exist, "Pokedex" will create a new username with the username entered.
 
-#### Main Menu: Goodbye
+#### Goodbye
 This last option exits the application and returns you to your terminal's shell.
 
 ### Final comments
