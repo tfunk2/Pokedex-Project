@@ -13,3 +13,4 @@ gem "sqlite3", "~> 1.4"
 gem "require_all", "~> 3.0"
 gem "rest-client"
 gem 'tty-prompt'
+gem 'colorize', '~> 0.8.1'
