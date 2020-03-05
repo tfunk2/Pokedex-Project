@@ -23,11 +23,11 @@ class Pokemon < ActiveRecord::Base
         # Conditional logic based on user choice selection
         case menu_response
         when 1
-            puts "\nEnter Pokemon Name:".light_yellow
+            puts "\nWhich Pokemon did you have in mind?".light_yellow
             poke_name_response = gets.chomp.downcase
             Pokemon.select_pokemon_by_name(poke_name_response,user)
         when 2
-            puts "\nEnter Pokemon ID between 1-151:".light_yellow
+            puts "\nFeeling lucky? Enter a random Pokemon ID between 1-151:".light_yellow
             poke_id_response = gets.chomp
             Pokemon.select_pokemon_by_id(poke_id_response,user)
         when 3
@@ -44,8 +44,7 @@ class Pokemon < ActiveRecord::Base
 
         # Conditional statement: If pokemon not found, return to search menu, otherwise access User#display_pokemon_info
         if !@found_pokemon
-            puts "Could not find that Pokemon. Please try your search again.".light_red
-            puts "\n"
+            puts "Uh-oh, it doesn't look like that is a generation one Pokemon. \nPlease try your search again.\n".light_red
             search_menu(user)
         else
             @found_pokemon.display_pokemon_info(user)
@@ -59,7 +58,7 @@ class Pokemon < ActiveRecord::Base
 
         # Conditional statement: If pokemon not found, return to search menu, otherwise access User#display_pokemon_info
         if !@found_pokemon_by_id
-            puts "Could not find that Pokemon. Please try your search again.".light_red
+            puts "Uh-oh, you must enter a number 1 - 151! Try search again.".light_red
             puts "\n"
             search_menu(user)
         else
@@ -79,7 +78,7 @@ class Pokemon < ActiveRecord::Base
         end
 
         # Display prompt and set variable to user's choice
-        pokemon_choice_response = prompt.select("\nSelect a Pokemon".light_yellow, pokemon_choices.sort, filter: true)
+        pokemon_choice_response = prompt.select("\nPick a Pokemon! No not that one--the other one!".light_yellow, pokemon_choices.sort, filter: true)
 
         # Based on Pokemon name selected, access Pokemon#select_pokemon_by_name to get pokemon object
         select_pokemon_by_name(pokemon_choice_response, user)
@@ -90,11 +89,11 @@ class Pokemon < ActiveRecord::Base
         Ascii.art(pokemon_id)
 
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
-        puts "Name: #{name.capitalize}".light_blue
-        puts "Pokemon ID: #{pokemon_id}".light_blue
-        puts "Height: #{height}".light_blue
-        puts "Weight: #{weight}".light_blue
-        puts "Type: #{type_1.capitalize}".light_blue
+        puts "Name: #{name.capitalize}".blue
+        puts "Pokemon ID: #{pokemon_id}".blue
+        puts "Height: #{height}".blue
+        puts "Weight: #{weight}".blue
+        puts "Type: #{type_1.capitalize}".blue
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
         
         # Display additional options menu for this Pokemon
@@ -150,7 +149,7 @@ class Pokemon < ActiveRecord::Base
         favorite_pokemon.find_by(user: user_passed).delete
 
         system("clear")
-        puts "\n#{name.capitalize} removed from Favorites.".light_green
+        puts "\n#{name.capitalize} was removed from Favorites. \nYou hurt #{name.capitalize}'s feelings, but it forgives you.".light_green
 
         # Return user to main_menu
         user_passed.main_menu
