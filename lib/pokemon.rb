@@ -79,12 +79,19 @@ class Pokemon < ActiveRecord::Base
     def more_options_menu(user)
         # Instatiate new menu prompt
         prompt = TTY::Prompt.new
-    
-        # Define menu choices
-        choices = {
-            'Add Pokemon to my Favorites' => 1,
-            'Return to Main Menu' => 4
-        }
+
+        # Define menu choices with Add Favorites option
+        if FavoritePokemon.all.find_by(user_id: user.id, pokemon: self) 
+            choices = {
+                'Remove Pokemon from my Favorites' => 2,
+                'Return to Main Menu' => 4
+            }
+        else
+            choices = {
+                'Add Pokemon to my Favorites' => 1,
+                'Return to Main Menu' => 4
+            }
+        end
     
         # Display prompt and set variable to user's choice
         menu_response = prompt.select("\nMore options:", choices)
@@ -93,6 +100,8 @@ class Pokemon < ActiveRecord::Base
         case menu_response
         when 1
             add_to_user_favorites(user)
+        when 2
+            remove_from_user_favorites(user)
         when 4
             system("clear")
             user.main_menu
@@ -111,6 +120,16 @@ class Pokemon < ActiveRecord::Base
 
     def add_to_user_favorites(user_passed)
         FavoritePokemon.create(user: user_passed, pokemon: self)
+        system("clear")
+        puts "\n#{name.capitalize} added to Favorites."
+        user_passed.main_menu
+    end
+    
+    def remove_from_user_favorites(user_passed)
+        favorite_pokemon.find_by(user: user_passed).destroy
+        system("clear")
+        puts "\n#{name.capitalize} removed from Favorites."
+        user_passed.main_menu
     end
 
 end
