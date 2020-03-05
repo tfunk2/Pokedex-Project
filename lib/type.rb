@@ -15,7 +15,7 @@ class Type < ActiveRecord::Base
             type.name.capitalize
         end
         all_types.reject do |type|
-            type == "Steel" || type == "Fairy" || type == "Dark" || type == "Shadow"
+            type == "Steel" || type == "Fairy" || type == "Dark" || type == "Flying"
         end
     end
 end
