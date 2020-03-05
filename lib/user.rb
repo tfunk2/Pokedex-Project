@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
     end
 
     def favorite_pokemon_list
+        pokemon.reload
         if pokemon == []
             puts "\nYou don't have any favorites yet!\n"
             main_menu

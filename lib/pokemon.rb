@@ -114,13 +114,12 @@ class Pokemon < ActiveRecord::Base
         pokemon_names = pokemon_choices.map do |pokemon|
             pokemon.name.capitalize
         end
-        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_names)
+        pokemon_choice_response = prompt.select("Select a Pokemon", pokemon_names.sort)
         select_pokemon_by_name(pokemon_choice_response, user)
     end
 
     def add_to_user_favorites(user_passed)
         FavoritePokemon.create(user: user_passed, pokemon: self)
-        user_passed.favorite_pokemon.reload
         system("clear")
         puts "\n#{name.capitalize} added to Favorites."
         user_passed.main_menu
@@ -128,7 +127,6 @@ class Pokemon < ActiveRecord::Base
     
     def remove_from_user_favorites(user_passed)
         favorite_pokemon.find_by(user: user_passed).delete
-        user_passed.favorite_pokemon.reload
         system("clear")
         puts "\n#{name.capitalize} removed from Favorites."
         user_passed.main_menu
