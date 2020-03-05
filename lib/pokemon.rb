@@ -89,11 +89,11 @@ class Pokemon < ActiveRecord::Base
         Ascii.art(pokemon_id)
 
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
-        puts "Name: #{name.capitalize}".blue
-        puts "Pokemon ID: #{pokemon_id}".blue
-        puts "Height: #{height}".blue
-        puts "Weight: #{weight}".blue
-        puts "Type: #{type_1.capitalize}".blue
+        puts "          Name: ".blue + "#{name.capitalize}".white
+        puts "            ID: ".blue + "#{pokemon_id}".white
+        puts "        Height: ".blue + "#{height}".white
+        puts "        Weight: ".blue + "#{weight}".white
+        puts "          Type: ".blue + "#{type_1.capitalize}".white
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
         
         # Display additional options menu for this Pokemon
@@ -119,7 +119,7 @@ class Pokemon < ActiveRecord::Base
         end
     
         # Display prompt and set variable to user's choice
-        menu_response = prompt.select("\nMore options:".light_yellow, choices)
+        menu_response = prompt.select("\nWhat else would you like to do?".light_yellow, choices)
         
         # Conditional logic based on user choice selection
         case menu_response
@@ -138,7 +138,7 @@ class Pokemon < ActiveRecord::Base
         FavoritePokemon.create(user: user_passed, pokemon: self)
 
         system("clear")
-        puts "\n#{name.capitalize} added to Favorites.".light_green
+        puts "\n#{name.capitalize} added to Favorites. There is a strong bond between you and #{name.capitalize}".light_green
 
         # Return user to main_menu
         user_passed.main_menu
