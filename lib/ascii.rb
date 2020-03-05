@@ -19,7 +19,7 @@ Nmd+---------/+/:--:sd.  `hdNmy---/-----odd/-:syhd+-/hmmd:----------:+do  `Nmdd+
           hNmd/--:hd`-+syso:`.hsoo+/-         -+yo.  `+shhhmmdhyo/.   /ymmmdhhdmmmNd-    .sNmh+--:dy
           `dNmdsyhmh-                                                    .:+++++:`/`       -hNmh+od-
            `dNhs+:.                                                                          -hNmdy 
-                                         Powered by PokeAPI.co                                 -hN- \n).colorize(:color => :blue, :background => :yellow)
+                                         Powered by PokeAPI.co                                 -hN- \n).colorize(:color => :blue, :background => :light_yellow)
     end
     
     def self.art(pokemon_id)
