@@ -149,7 +149,7 @@ class Pokemon < ActiveRecord::Base
         favorite_pokemon.find_by(user: user_passed).delete
 
         system("clear")
-        puts "\n#{name.capitalize} was removed from Favorites. \nYou hurt #{name.capitalize}'s feelings, but it forgives you.".light_green
+        puts "\n#{name.capitalize} was removed from Favorites. You hurt #{name.capitalize}'s feelings, but it forgives you.".light_green
 
         # Return user to main_menu
         user_passed.main_menu
