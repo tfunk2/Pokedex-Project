@@ -89,6 +89,7 @@ class User < ActiveRecord::Base
         new_username = gets.chomp
 
         if new_username = "Ash Ketchum"
+            Ascii.pikachu_meme
             puts "\nI didn't know we had a master trainer in the building!".blue
         end
 
