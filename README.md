@@ -66,8 +66,8 @@ Youtube link to a screen recording of the app! - https://www.youtube.com/watch?v
 Thanks for opening and tinkering with our version of a "Pokemon" generation 1 "Pokedex", we hope it was enjoyable! Please understand this is our first ever programming project using any kind of code language, we would love feedback that is constructive and helpful from all who made it this far!
 
 ### Creators / Collaborators: 
-    Kristine Du - https://github.com/kadrianne 
-    Tyler Funk - https://github.com/tfunk2
+Kristine Du - https://github.com/kadrianne 
+Tyler Funk - https://github.com/tfunk2
 
 ### Credits
 Thank you to 'MatheusFaria' on GitHub for supplying the entire ASCII art file we translated to ruby! 
