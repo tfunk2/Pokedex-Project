@@ -83,12 +83,17 @@ class User < ActiveRecord::Base
     # This method allows current user to update their username in the users table
     def update_username
         # Requests input from user and saves to variable
-        puts "\nWhat would you like to change your username to? \nHow about Ash Ketchum? It just has a certain ring to it.".light_yellow
+        puts "\nWhat would you like to change your username to?".light_yellow
+        sleep(1)
+        puts "How about Ash Ketchum? It just has a certain ring to it.".blue
         new_username = gets.chomp
+
+        if new_username = "Ash Ketchum"
+            puts "\nI didn't know we had a master trainer in the building!".blue
+        end
 
         # Check if username already exists
         @found_user = User.all.find_by(username: new_username)
-
         # Conditional statement: If user exists, display error message, else update user
         if @found_user
             puts "\nSorry, that username already exists!".red

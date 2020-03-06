@@ -2,6 +2,7 @@ class Pokedex
 
     # This class method kicks off the app
     def self.welcome
+        pid = fork{ exec 'afplay', "lib/Research-Lab.mp3" }
         system("clear")
         Ascii.welcome_art
         puts "\n\nWelcome to the Pokedex for generation one Pokemon!\n\n".blue
