@@ -90,10 +90,10 @@ class Pokemon < ActiveRecord::Base
 
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
         puts "          Name: ".blue + "#{name.capitalize}".white
-        puts "            ID: ".blue + "#{pokemon_id}".white
-        puts "        Height: ".blue + "#{height}".white
-        puts "        Weight: ".blue + "#{weight}".white
-        puts "          Type: ".blue + "#{type_1.capitalize}".white
+        puts "            ID: ".blue + "##{pokemon_id}".white
+        puts "        Height: ".blue + "#{height} ft.".white
+        puts "        Weight: ".blue + "#{weight} lbs.".white
+        puts "     Main Type: ".blue + "#{type_1.capitalize}".white
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n".light_yellow
         
         # Display additional options menu for this Pokemon
