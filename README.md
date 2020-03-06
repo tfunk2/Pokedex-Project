@@ -60,7 +60,7 @@ This option allows the current user to switch to another account if it has previ
 This last option exits the application and returns you to your terminal's shell.
 
 ### Youtube Demo Link
-Youtube link to a screen recording of the app! - https://www.youtube.com/watch?v=hx0iC6WbLng&t=32s 
+Youtube link to a screen recording of the app! - https://www.youtube.com/watch?v=hx0iC6WbLng
 
 ### Final comments
 Thanks for opening and tinkering with our version of a "Pokemon" generation 1 "Pokedex", we hope it was enjoyable! Please understand this is our first ever programming project using any kind of code language, we would love feedback that is constructive and helpful from all who made it this far!
