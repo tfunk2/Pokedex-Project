@@ -3,20 +3,20 @@ class Ascii
     def self.welcome_art
         puts %Q(
                                                  .odh.                                              
-                                               `+ddosd:                                             
-                                   `-`-`      :hds-:ohh.                                            
-       `.:/+oooo+/-`         `-/oyhddmmdo.  -hmdsshs/.omNmdhhddhys+:`             `:                
+                                               `+d  sd:                                             
+                                   `-`-`      :hd  :ohh.                                            
+       `.:/+oooo+/-`         `-/oyhddmmdo.  -hmd shs/.omNmdhhddhys+:`             `:                
    `:oydyso++//+osyds-    `ymdyo+/:hmdo:sdy-/mmddhhhhyhNNdo:::::/+sydy:      -/oyysdy.   `+yy-      
-`+yds+:------------:sd+   .Nmdyo---yh/---:sddy/:-:---/sdmm/---------/ody`  .mmo:---/hd:`+mmhyd/     
-Nmd+---------/+/:--:sd.  `hdNmy---/-----odd/-:syhd+-/hmmd:----------:+do  `Nmdd+---:yddmh/--odo     
- oNNds-/-----:hddmo--sd+osyyhdmh-------+hydy--oh+y::yddmmmd+----------/dd+++mddNmy:---sy/-----/ds`  
-  /NNmmmy-----/d+mo-/dds/++:-:+yy-----ohhsdh--:o/-/s+-/sdmd:-:o+/---:sdyo+++oshmmNdo--------:ohdy:  
-   -yoNNms-----sy/-odh:-ods::s-:hs------:/ody/--------/yddh--sddmy-/dh:--+ss+--/ymmh/----:ohh+-     
-      :NNms-----:odmd/--/yddho-:hy-:hyo/---:shhysosshddNNmo-:yyomy:yd:--yy/yhs--:yd:-----:ohy:      
-       +NNmo----odmNm+---------sd/-:dmNmdyo/--:/sdho/.oNmd:-:hhs+--yd---+/::/+syhdh+-:sho---+hh+`   
-        oNmd+---:hmNmd+------+hdy--:dy-+ymNmdyo/od:   hNmd--------/hdy:---:+oosddy:-odhNmdo---/ydo. 
-         yNmd/---+dydNmmhyyhdhNmdsyhds    -+ymNmmd:  `NNmdyysssyhdmh/ddy+:----:hmmdhm+ .sNmd+---/sds
-          hNmd/--:hd`-+syso:`.hsoo+/-         -+yo.  `+shhhmmdhyo/.   /ymmmdhhdmmmNd-    .sNmh+--:dy
+`+yds+:            :sd+   .Nmdyo   yh/   :sddy/: :   /sdmm/         /ody`  .mmo:   /hd:`+mmhyd/     
+Nmd+         /+/:  :sd.  `hdNmy         odd/ :syhd+ /hmmd:          :+do  `Nmdd+   :yddmh/  odo     
+ oNNds        :hddmo sd+osyyhdmh       +hydy  oh+y: yddmmmd+          /dd+++mddNmy:   sy/     /ds`  
+  /NNmmmy     /d+mo /dds/++:-:+yy     ohhsdh  :o/ /s+ /sdmd: :o+/   :sdyo+++oshmmNdo        :ohdy:  
+   -yoNNms     sy/-odh: ods::s :hs      :/ody/        /yddh  sddmy /dh:  +ss+  /ymmh/    :ohh+-     
+      :NNms     :odmd/  /yddho :hy :hyo    :shhysosshddNNmo :yyomy:yd:  yy/yhs  :yd:     :ohy:      
+       +NNmo    odmNm+         sd/ :dmNmdyo   :/sdho/.oNmd: :hhs+  yd   +/::/+syhd   :sho   +hh+`   
+        oNmd+   :hmNmd+      +hdy  :dy +ymNmdyo/od:   hNmd        /hdy:   :+oosdd   odhNmdo   /ydo. 
+         yNmd/   +dydNmmhyyhdhNmdsyhds    -+ymNmmd:  `NNmdyysssyhdmh/ddy+:    :hmmdhm+ .sNmd+   /sds
+          hNmd/  :hd`-+syso:`.hsoo+/-         -+yo.  `+shhhmmdhyo/.   /ymmmdhhdmmmNd-    .sNmh+  :dy
           `dNmdsyhmh-                                                    .:+++++:`/`       -hNmh+od-
            `dNhs+:.                                                                          -hNmdy 
                                          Powered by PokeAPI.co                                 -hN- \n).colorize(:color => :blue, :background => :light_yellow)
