@@ -86,9 +86,17 @@ class User < ActiveRecord::Base
         puts "\nWhat would you like to change your username to? \nHow about Ash Ketchum? It just has a certain ring to it.".light_yellow
         new_username = gets.chomp
 
-        # Updates user instance based on input username
-        self.update(username: new_username)
-        puts "\n#{username} huh? \nI was just getting used to that other name, but I'll call you #{username} from now on.".blue
+        # Check if username already exists
+        @found_user = User.all.find_by(username: new_username)
+
+        # Conditional statement: If user exists, display error message, else update user
+        if @found_user
+            puts "\nSorry, that username already exists!".red
+        else
+            # Updates user instance based on input username
+            self.update(username: new_username)
+            puts "\n#{username} huh? \nI was just getting used to that other name, but I'll call you #{username} from now on.".blue
+        end
         
         # Return to main_menu
         main_menu
