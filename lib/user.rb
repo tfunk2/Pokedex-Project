@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
             'See my Favorite Pokemon' => 2,
             'Update my username' => 3,
             'Switch user' => 4,
-            'Goodbye' => 5
+            'I\'m done' => 5
         }
 
         # Display prompt and set variable to user's choice

@@ -58,7 +58,7 @@ class Pokemon < ActiveRecord::Base
 
         # Conditional statement: If pokemon not found, return to search menu, otherwise access User#display_pokemon_info
         if !@found_pokemon_by_id
-            puts "Uh-oh, you must enter a number 1 - 151! Try search again.".light_red
+            puts "Uh-oh, you must enter a number 1 - 151! \nPlease try your search again.".light_red
             puts "\n"
             search_menu(user)
         else
@@ -138,7 +138,7 @@ class Pokemon < ActiveRecord::Base
         FavoritePokemon.create(user: user_passed, pokemon: self)
 
         system("clear")
-        puts "\n#{name.capitalize} added to Favorites. There is a strong bond between you and #{name.capitalize}".light_green
+        puts "\n#{name.capitalize} added to Favorites. There is a strong bond between you and #{name.capitalize}.".light_green
 
         # Return user to main_menu
         user_passed.main_menu
