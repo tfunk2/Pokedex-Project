@@ -4,7 +4,7 @@ class Pokedex
     def self.welcome
         system("clear")
         Ascii.welcome_art
-        puts "\nWelcome to the Pokedex for generation one Pokemon!\n\n".blue
+        puts "\n\nWelcome to the Pokedex for generation one Pokemon!\n\n".blue
 
         # Request username input from user and save to variable
         puts "Enter a new or existing username to continue:".light_yellow
