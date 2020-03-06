@@ -84,12 +84,12 @@ class User < ActiveRecord::Base
     def update_username
         # Requests input from user and saves to variable
         puts "\nWhat would you like to change your username to?".light_yellow
-        sleep(1)
+        sleep(0.5)
         puts "How about Ash Ketchum? It just has a certain ring to it.".blue
         new_username = gets.chomp
 
         # This is an easter egg for users who take the advice of entering "Ash Ketchum" as their username
-        if new_username = "Ash Ketchum"
+        if new_username == "Ash Ketchum"
             Ascii.pikachu_meme
             puts "\nI didn't know we had a master trainer in the building!".blue
         end
