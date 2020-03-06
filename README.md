@@ -56,7 +56,7 @@ This option allows a user to change their username, and keep all of favorite "Po
 #### Switch user
 This option allows the current user to switch to another account if it has previously been created from their local machine. If the username does not exist, "Pokedex" will create a new username with the username entered.
 
-#### Goodbye
+#### I'm done
 This last option exits the application and returns you to your terminal's shell.
 
 ### Youtube Demo Link
@@ -66,7 +66,7 @@ Youtube link to a screen recording of the app! - https://www.youtube.com/watch?v
 Thanks for opening and tinkering with our version of a "Pokemon" generation 1 "Pokedex", we hope it was enjoyable! Please understand this is our first ever programming project using any kind of code language, we would love feedback that is constructive and helpful from all who made it this far!
 
 ### Creators / Collaborators: 
-Kristine Du - https://github.com/kadrianne 
+Kristine Du - https://github.com/kadrianne<br/> 
 Tyler Funk - https://github.com/tfunk2
 
 ### Credits
